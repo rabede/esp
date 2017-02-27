@@ -1,5 +1,7 @@
 package esp;
 
+//* Ursprünglich aus www.rasberry-pi-geek.de 3/16 von Martin Mohr *//
+
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import javax.ws.rs.*;
