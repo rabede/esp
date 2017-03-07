@@ -1,11 +1,14 @@
 package esp;
 
-//* Ursprünglich aus www.rasberry-pi-geek.de 3/16 von Martin Mohr *//
+// Ursprünglich aus www.rasberry-pi-geek.de 3/16 von Martin Mohr 
+// wiederum aufbauend auf http://openbook.rheinwerk-verlag.de/java7/1507_13_002.html 
 
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -52,5 +55,28 @@ public class SetTemp {
 		System.out.println("Zum Beenden bitte [Eingabe] drücken");
 		System.in.read();
 		server.stop(0);
+	}
+
+	@GET
+	@Path("xml")
+	@Produces(MediaType.TEXT_XML)
+	public ServerInfo serverinfo() {
+		ServerInfo info = new ServerInfo();
+		info.server = System.getProperty("os.name") + " " + System.getProperty("os.version");
+		return info;
+	}
+	
+	@GET
+	@Path("json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ServerInfo json() {
+		ServerInfo info = new ServerInfo();
+		info.server = System.getProperty("os.name") + " " + System.getProperty("os.version");
+		return info;
+	}
+
+	@XmlRootElement
+	class ServerInfo {
+		public String server;
 	}
 }
