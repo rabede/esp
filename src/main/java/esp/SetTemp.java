@@ -74,9 +74,10 @@ public class SetTemp {
 		info.server = System.getProperty("os.name") + " " + System.getProperty("os.version");
 		return info;
 	}
+}
 
-	@XmlRootElement
-	class ServerInfo {
-		public String server;
-	}
+
+@XmlRootElement
+class ServerInfo {
+	public String server;
 }
