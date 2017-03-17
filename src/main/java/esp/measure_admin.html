@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script type="text/javascript" src="admin.js"></script>
+</head>
+<body>
+
+	<h1>Top 10 Measures<h1>
+
+   	<input type="button" id="create" value="Load measures from server" 
+   	       onclick="Javascript:addTable()">
+    	
+    <div id="myDynTableDiv">
+	</div>
+	
+	<br>
+	
+	<h2>JAX-RS createMeasure</h2>
+
+	<form id="createForm" accept-charset="UTF-8">
+		
+		<p>Name:   <input type="text" name="name" /></p>
+		<p>Points: <input type="text" name="points" /></p>
+		<p>Level:  <input type="text" name="level" /></p>
+		
+		<input type="button" value="Add Measure" 
+		       onclick="Javascript:createMeasureWithREST()" />
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<body>
+	<h1>JAX-RS createMeasure</h1>
+
+	<form action="http://localhost:3333/rest/measures" method="post"
+		accept-charset="UTF-8">
+
+		<p>
+			Temperatur: <input type="text" name="temperature" />
+		</p>
+		<p>
+			Luftfeuchtigkeit: <input type="text" name="humidity" />
+		</p>
+		<p>
+			Windgeschwindigkeit: <input type="text" name="windspeed" />
+		</p>
+		<p>
+			Niederschlag: <input type="text" name="downfall" />
+		</p>
+		<p>
+			Regen: <input type="checkbox" name="rain" />
+		</p>
+
+		<input type="submit" value="Add Measure" />
+	</form>
+
+</body>
+</html>
