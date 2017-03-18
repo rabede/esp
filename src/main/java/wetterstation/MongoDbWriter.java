@@ -1,4 +1,4 @@
-package esp;
+package wetterstation;
 
 import java.time.LocalDateTime;
 

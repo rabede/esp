@@ -35,13 +35,13 @@ function extractMeasuresFromXml(xhr, measures)
     {
         var measureNode = allmeasureNodes[i];
 
-        var name = getChildNodeValue(measureNode, "name");
-        var points = getChildNodeValue(measureNode, "points");
-        var level = getChildNodeValue(measureNode, "level");
+        var temperature = getChildNodeValue(measureNode, "temperature");
+        var humidity = getChildNodeValue(measureNode, "humidity");
+        var windspeed = getChildNodeValue(measureNode, "windspeed");
         var day = getChildNodeValue(measureNode, "day");
         var id = getChildNodeValue(measureNode, "id");
         
-        measures.push([name, points, level, day, id]);
+        measures.push([temperature, humidity, windspeed, day, id]);
     }  
 }
 
@@ -70,7 +70,7 @@ function createHtmlTable(measures)
     table.border = "1";
 
     // Add the header row.
-    var headerColumns = ["", "Name", "Points", "Level", "Date", "id"];
+    var headerColumns = ["", "temperature", "humidity", "windspeed", "Date", "id"];
     var headerColumnsCount = headerColumns.length;
     var row = table.insertRow(-1);
     for (var i = 0; i < headerColumnsCount; i++) 

@@ -28,15 +28,16 @@ public class MeasureRESTService {
 	private final MeasureManager measureManager = ManagerProvider.getMeasureManager();
 
 	@POST
-	public Response createMeasure(@FormParam("day") final LocalDate day, @FormParam("time") final LocalTime time,
+	public Response createMeasure(@FormParam("day") final String day, @FormParam("time") final String time,
 			@FormParam("temperature") final Float temperature, @FormParam("humidity") final int humidity,
 			@FormParam("windspeed") final float windspeed, @FormParam("downfall") final float downfall,
 			@FormParam("rain") final boolean rain) {
 		if (temperature != null) {
-			final Measure measure = new Measure(day, time, temperature, humidity, windspeed, downfall, rain);
+			final Measure measure = new Measure(LocalDate.parse(day), LocalTime.parse(time), temperature, humidity,
+					windspeed, downfall, rain);
 			measureManager.add(measure);
 
-			return Response.created(URI.create("/rest/measures/" + measure.getId())).build();
+			return Response.created(URI.create("/rest/measures/" + "measure.getId()")).build();
 		}
 		return Response.status(Response.Status.BAD_REQUEST).build();
 	}

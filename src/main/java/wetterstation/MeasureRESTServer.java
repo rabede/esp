@@ -18,7 +18,7 @@ import com.sun.net.httpserver.HttpServer;
  */
 public class MeasureRESTServer {
 	private static final String BASE_URI = "http://localhost:3333/rest/";
-	private static final String PACKAGES = "esp";
+	private static final String PACKAGES = "wetterstation";
 
 	public static void main(final String[] args) throws URISyntaxException, IOException {
 		final MeasureManager measureManager = ManagerProvider.getMeasureManager();

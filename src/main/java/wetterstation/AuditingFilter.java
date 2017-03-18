@@ -1,4 +1,4 @@
-package esp;
+package wetterstation;
 
 import java.io.IOException;
 import java.lang.reflect.Method;

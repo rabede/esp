@@ -1,4 +1,4 @@
-package esp;
+package wetterstation;
 
 import java.io.IOException;
 import java.net.URI;
@@ -8,9 +8,6 @@ import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.sun.net.httpserver.HttpServer;
-
-import esp.MeasureManager;
-import wetterstation.ManagerProvider;
 
 /**
  * Diese Klasse stellt einen REST-Server bereit
@@ -22,13 +19,12 @@ import wetterstation.ManagerProvider;
 public class AuditingMeasureRESTServer 
 {
     private static final String BASE_URI = "http://localhost:4444/rest/";
-    private static final String[] PACKAGES = { "esp",
-    		                                   "esp" };
+    private static final String[] PACKAGES = { "wetterstation" };
         
     public static void main(final String[] args) throws URISyntaxException, IOException
     {
         final MeasureManager measureManager = ManagerProvider.getMeasureManager();
-        measureManager.populateFromCsv("resources/Measures.csv");
+        measureManager.populateFromCsv("resources/20170118.txt");
    
         final ResourceConfig rc = new ResourceConfig().packages(PACKAGES);
 		final HttpServer server = JdkHttpServerFactory.
