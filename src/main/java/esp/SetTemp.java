@@ -3,12 +3,15 @@ package esp;
 // Ursprünglich aus www.rasberry-pi-geek.de 3/16 von Martin Mohr 
 // wiederum aufbauend auf http://openbook.rheinwerk-verlag.de/java7/1507_13_002.html 
 
-import com.sun.jersey.api.container.httpserver.HttpServerFactory;
+import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+
 import com.sun.net.httpserver.HttpServer;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -19,6 +22,10 @@ public class SetTemp {
 	static final String DB_URL = "jdbc:mysql://localhost/Temperatur";
 	static final String USER = "user";
 	static final String PASS = "user";
+
+	private static final String BASE_URI = "http://localhost:8080/rest/";
+	private static final String PACKAGES = "esp";
+
 	Connection conn = null;
 	Statement stmt = null;
 
@@ -50,7 +57,10 @@ public class SetTemp {
 	}
 
 	public static void main(String[] args) throws Exception {
-		HttpServer server = HttpServerFactory.create("http://localhost:8080/rest");
+
+		final ResourceConfig rc = new ResourceConfig().packages(PACKAGES);
+		final HttpServer server = JdkHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+
 		server.start();
 		System.out.println("Zum Beenden bitte [Eingabe] drücken");
 		System.in.read();
@@ -65,7 +75,7 @@ public class SetTemp {
 		info.server = System.getProperty("os.name") + " " + System.getProperty("os.version");
 		return info;
 	}
-	
+
 	@GET
 	@Path("json")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -75,7 +85,6 @@ public class SetTemp {
 		return info;
 	}
 }
-
 
 @XmlRootElement
 class ServerInfo {

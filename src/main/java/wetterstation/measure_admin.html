@@ -18,9 +18,21 @@
 
 	<form id="createForm" accept-charset="UTF-8">
 		
-		<p>Name:   <input type="text" name="temperature" /></p>
-		<p>Points: <input type="text" name="humidity" /></p>
-		<p>Level:  <input type="text" name="windspeed" /></p>
+		<p>
+			Temperatur: <input type="text" name="temperature" />
+		</p>
+		<p>
+			Luftfeuchtigkeit: <input type="text" name="humidity" />
+		</p>
+		<p>
+			Windgeschwindigkeit: <input type="text" name="windspeed" />
+		</p>
+		<p>
+			Niederschlag: <input type="text" name="downfall" />
+		</p>
+		<p>
+			Regen: <input type="checkbox" name="rain" />
+		</p>
 		
 		<input type="button" value="Add Measure" 
 		       onclick="Javascript:createMeasureWithREST()" />
