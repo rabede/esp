@@ -60,8 +60,8 @@ public class SetTemp {
 
 		final ResourceConfig rc = new ResourceConfig().packages(PACKAGES);
 		final HttpServer server = JdkHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+		// führt impliziten start() aus!
 
-		server.start();
 		System.out.println("Zum Beenden bitte [Eingabe] drücken");
 		System.in.read();
 		server.stop(0);
